@@ -6,6 +6,7 @@ import jxl.write.Number;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.*;
 
 
@@ -103,24 +104,26 @@ public class ExcelExporter {
             myFirstWbook = Workbook.createWorkbook(new File(_excelFileLocation));
 
             //create the overview test plan
-            myFirstWbook.createSheet("Test Plans", 0);
+            WritableSheet excelSheet = myFirstWbook.createSheet("Test_Plans", 0);
 
-            //addHeaders();
+            addHeaders();
+//
+            int counter = 1;
+            for(sprintObject s : listOfItems){
+                createIndividualSheets(s,counter);
+                //myFirstWbook.createSheet(s.getIssueKey(),counter);
+                counter++;
+            }
 
-            WritableSheet excelSheet = myFirstWbook.getSheet(0);
-            //Write them to test plan
-            for(int x = 0; x < listOfItems.size();x++){
-                System.out.println(listOfItems.get(x).toString());
 
-                Label labelType = new Label(x + 1, 0, listOfItems.get(x).getIssueType());
-                Label labelIssue = new Label(x + 1, x+1, listOfItems.get(x).getIssueKey());
-                Label labelSummary = new Label(x + 1, x+2, listOfItems.get(x).getIssueSummary());
+            for(int x = 1; x < listOfItems.size();x++) {
+//                System.out.println(listOfItems.get(x).toString());
+                Label labelType = new Label(0, x, listOfItems.get(x).getIssueType());
+                Label labelIssue = new Label(1, x, listOfItems.get(x).getIssueKey());
+                Label labelSummary = new Label(2, x, listOfItems.get(x).getIssueSummary());
                 excelSheet.addCell(labelType);
                 excelSheet.addCell(labelIssue);
                 excelSheet.addCell(labelSummary);
-
-                //myFirstWbook.createSheet(listOfItems.get(x).getIssueKey(),x);
-                myFirstWbook.write();
             }
 
             myFirstWbook.write();
@@ -144,6 +147,73 @@ public class ExcelExporter {
         }//finally
     }//main
 
+
+    private static void createIndividualSheets(sprintObject obj, int count){
+/*
+        //Hyperinks https://stackoverflow.com/questions/16195140/how-do-i-activate-a-hyperlink-in-excel-after-writing-it-in-jexcel
+ */
+        String [] headers = {
+                "Test Case Name:","Description: ", "Test Case Completed Date:",
+                "Run By:","Start Date","Finish Date","Jira Ticket","Time(How long did it take","Environment",
+                "Build #","Prerequisite","Os / Browser:", "Assumptions","Overall Pass or Fail"
+        };
+
+        String [] workHeaders = {
+                "Steps #","Title","Action","Expected Result","Actual Results", "Pass / Fail", "Notes"
+        };
+
+        Label label;
+        WritableSheet excelSheet = myFirstWbook.createSheet(obj.getIssueKey(),count);
+        String baseJiraUrl = "https://medbridge.atlassian.net/browse/";
+        String jiraLinkURL = baseJiraUrl+obj.getIssueKey();
+        String linkDesc = obj.getIssueKey();
+        WritableCellFormat header = new WritableCellFormat();
+
+        try {
+
+            header.setBackground(Colour.DARK_PURPLE);
+
+            for (int x = 0; x < headers.length; x++) {
+                label = new Label(0, x, headers[x]);
+                excelSheet.addCell(label);
+
+                //Test Case Name
+                if(headers[x].equalsIgnoreCase("test case name")){
+                    label = (new Label(1,x,obj.getIssueKey()));
+                    excelSheet.addCell(label);
+                }
+
+                //Description
+                if(headers[x].equalsIgnoreCase("description")){
+                    label = (new Label(1,x,obj.getIssueSummary()));
+                    excelSheet.addCell(label);
+                }
+
+                //Hyper Link
+                if (headers[x].equalsIgnoreCase("jira ticket")) {
+                    WritableHyperlink link = (new WritableHyperlink(1,x,new URL(jiraLinkURL)));
+                    link.setDescription(linkDesc);
+                    excelSheet.addHyperlink(link);
+                }
+
+
+            }//end of for loop
+
+            for(int x = 0 ; x < workHeaders.length;x++) {
+                label = new Label(x, 15, workHeaders[x]);
+                excelSheet.addCell(label);
+                WritableCell c = excelSheet.getWritableCell(x,15);
+                c.setCellFormat(header);
+            }
+
+
+        }catch (Exception e){
+
+        }
+
+
+    }
+
     private static void addHeaders(){
         String [] arrayHeaders ={"Issue Type","Jira Ticket", "Summary", "QA Owner","Story Points", "Result(P/F)","Notes"};
         WritableCellFormat header = new WritableCellFormat();
@@ -162,7 +232,7 @@ public class ExcelExporter {
                 c.setCellFormat(header);
             }
 
-            myFirstWbook.write();
+            //myFirstWbook.write();
 
         }catch(Exception e){
             System.out.print("Error thrown while trying to do the headers. (addHeaders Method)" + e.getStackTrace());
