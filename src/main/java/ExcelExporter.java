@@ -62,26 +62,6 @@ public class ExcelExporter {
     private static List<sprintObject> listOfItems = new ArrayList<sprintObject>();
     private static WritableWorkbook myFirstWbook = null;
 
-    private static void readCSVFile(String fileLoc){
-        Scanner scan;
-
-        try{
-           scan  = new Scanner(new File(fileLoc));
-           //Dump the header line
-           scan.nextLine();
-
-
-           while(scan.hasNextLine()){
-               String [] arrayParse = scan.nextLine().split(",");
-               if(arrayParse[0].equalsIgnoreCase("story")){
-                   listOfItems.add(new sprintObject(arrayParse[0],arrayParse[1],arrayParse[4]));
-               }
-           }
-        }catch(FileNotFoundException e){
-            System.out.print("File not found exception...\n" + e.getStackTrace());
-        }
-    }
-
 
     public static void main(String [] args) {
         String sprintName;
@@ -95,7 +75,7 @@ public class ExcelExporter {
             _excelFileLocation = System.getProperty("user.dir") + sprintName + ".xls";
         }
 
-        readCSVFile("Alpha_Sprint_E.csv");//locOfCSV);
+        readCSVFile("Alpha_Sprint_F.csv");//locOfCSV);
 
         //Get that ABC order going
         Collections.sort(listOfItems);
@@ -147,6 +127,25 @@ public class ExcelExporter {
         }//finally
     }//main
 
+    private static void readCSVFile(String fileLoc){
+        Scanner scan;
+
+        try{
+           scan  = new Scanner(new File(fileLoc));
+           //Dump the header line
+           scan.nextLine();
+
+            //on the full line 0 is summary, 1 = issue key, 4 = issue type, 59 = story pts
+           while(scan.hasNextLine()){
+               String [] arrayParse = scan.nextLine().split(",");
+               if(arrayParse[0].equalsIgnoreCase("story")||arrayParse[0].equalsIgnoreCase("bug")){
+                   listOfItems.add(new sprintObject(arrayParse[0],arrayParse[1],arrayParse[4]));
+               }
+           }
+        }catch(FileNotFoundException e){
+            System.out.print("File not found exception...\n" + e.getStackTrace());
+        }
+    }
 
     private static void createIndividualSheets(sprintObject obj, int count){
 /*
@@ -171,7 +170,7 @@ public class ExcelExporter {
 
         try {
 
-            header.setBackground(Colour.DARK_PURPLE);
+            header.setBackground(Colour.PLUM);
 
             for (int x = 0; x < headers.length; x++) {
                 label = new Label(0, x, headers[x]);
@@ -239,6 +238,12 @@ public class ExcelExporter {
         }
 
     }
+
+
+
+
+
+
 
 
 }
