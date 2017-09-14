@@ -13,14 +13,19 @@ import java.util.*;
 public class ExcelExporter {
 
     private static class sprintObject implements Comparable<sprintObject>{
-        String issueType,issueKey,issueSummary;
+        String issueType,issueKey,issueSummary, storyPts;
 
 
-        public sprintObject(String issue, String key, String summary){
+        public sprintObject(String issue, String key, String summary, String story){
             this.issueType = issue;
             this.issueKey = key;
             this.issueSummary = summary;
+            this.storyPts = story;
         }
+
+        public String getStoryPts(){return this.storyPts;}
+
+        public void setStoryPts(String story){this.storyPts = story;}
 
         public String getIssueType() {
             return issueType;
@@ -75,7 +80,7 @@ public class ExcelExporter {
             _excelFileLocation = System.getProperty("user.dir") + sprintName + ".xls";
         }
 
-        readCSVFile("Alpha_Sprint_F.csv");//locOfCSV);
+        readCSVFile("Alpha_Sprint_faceoff_custom.csv");//locOfCSV);
 
         //Get that ABC order going
         Collections.sort(listOfItems);
@@ -95,15 +100,23 @@ public class ExcelExporter {
                 counter++;
             }
 
-
+            String currTicketType = "";
             for(int x = 1; x < listOfItems.size();x++) {
-//                System.out.println(listOfItems.get(x).toString());
+//
+//                String [] split = listOfItems.get(x).issueKey.split("-");
+//                if(!(currTicketType.equalsIgnoreCase(split[1]))){
+//                    currTicketType = split[1];
+//                    excelSheet.addCell(new Label(0,x,getJiraType(split[1])));
+//                }
+
                 Label labelType = new Label(0, x, listOfItems.get(x).getIssueType());
                 Label labelIssue = new Label(1, x, listOfItems.get(x).getIssueKey());
                 Label labelSummary = new Label(2, x, listOfItems.get(x).getIssueSummary());
+                Label labelStoryPt = new Label(4,x,listOfItems.get(x).getStoryPts());
                 excelSheet.addCell(labelType);
                 excelSheet.addCell(labelIssue);
                 excelSheet.addCell(labelSummary);
+                excelSheet.addCell(labelStoryPt);
             }
 
             myFirstWbook.write();
@@ -127,6 +140,23 @@ public class ExcelExporter {
         }//finally
     }//main
 
+    //TODO: Need to finish getting all of the naming conventions
+    private String getJiraType(String type){
+
+        if(type.equals("ACA"))
+            return "Android";
+
+        if(type.equals("REP"))
+            return "Reporting/Analytics";
+
+        if(type.equals("ACC"))
+            return "Accreditation Updates";
+
+        //if(type.equals("Con"))
+
+        return null;
+    }
+
     private static void readCSVFile(String fileLoc){
         Scanner scan;
 
@@ -138,8 +168,15 @@ public class ExcelExporter {
             //on the full line 0 is summary, 1 = issue key, 4 = issue type, 59 = story pts
            while(scan.hasNextLine()){
                String [] arrayParse = scan.nextLine().split(",");
+
+               //System.out.println(arrayParse.toString());
                if(arrayParse[0].equalsIgnoreCase("story")||arrayParse[0].equalsIgnoreCase("bug")){
-                   listOfItems.add(new sprintObject(arrayParse[0],arrayParse[1],arrayParse[4]));
+                   try {
+                       listOfItems.add(new sprintObject(arrayParse[0], arrayParse[1], arrayParse[4], arrayParse[11]));
+                       System.out.println(new sprintObject(arrayParse[0], arrayParse[1], arrayParse[4], arrayParse[11]).toString());
+                   }catch(Exception e){
+
+                   }
                }
            }
         }catch(FileNotFoundException e){
@@ -152,7 +189,7 @@ public class ExcelExporter {
         //Hyperinks https://stackoverflow.com/questions/16195140/how-do-i-activate-a-hyperlink-in-excel-after-writing-it-in-jexcel
  */
         String [] headers = {
-                "Test Case Name:","Description: ", "Test Case Completed Date:",
+                "Test Case Name:","Description:", "Test Case Completed Date:",
                 "Run By:","Start Date","Finish Date","Jira Ticket","Time(How long did it take","Environment",
                 "Build #","Prerequisite","Os / Browser:", "Assumptions","Overall Pass or Fail"
         };
@@ -177,19 +214,19 @@ public class ExcelExporter {
                 excelSheet.addCell(label);
 
                 //Test Case Name
-                if(headers[x].equalsIgnoreCase("test case name")){
+                if(headers[x].equalsIgnoreCase("Test Case Name:")){
                     label = (new Label(1,x,obj.getIssueKey()));
                     excelSheet.addCell(label);
                 }
 
                 //Description
-                if(headers[x].equalsIgnoreCase("description")){
+                if(headers[x].equalsIgnoreCase("Description:")){
                     label = (new Label(1,x,obj.getIssueSummary()));
                     excelSheet.addCell(label);
                 }
 
                 //Hyper Link
-                if (headers[x].equalsIgnoreCase("jira ticket")) {
+                if (headers[x].equalsIgnoreCase("Jira Ticket")) {
                     WritableHyperlink link = (new WritableHyperlink(1,x,new URL(jiraLinkURL)));
                     link.setDescription(linkDesc);
                     excelSheet.addHyperlink(link);
@@ -207,7 +244,7 @@ public class ExcelExporter {
 
 
         }catch (Exception e){
-
+            System.out.print("Error in creating individual worksheets " + e.getStackTrace());
         }
 
 

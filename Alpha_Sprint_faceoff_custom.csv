@@ -1,0 +1,84 @@
+Issue Type,Issue key,Issue id,Parent id,Summary,Assignee,Priority,Status,Resolution,Created,Due Date,Custom field (Story Points)
+Story,TD-75,12784,,Staging for MedEx,phil,Major,To Do,,06/Sep/17 11:04 AM,,0.0
+Sub-task,TD-76,12817,12784,Create staging env,,Major,To Do,,07/Sep/17 8:30 AM,,
+Sub-task,TD-77,12818,12784,Show team how to deploy it,,Major,To Do,,07/Sep/17 8:30 AM,,
+Sub-task,TD-78,12819,12784,Show Autri how to test it,,Major,To Do,,07/Sep/17 8:30 AM,,
+Story,TD-69,12773,,Cloud Search MedEx,gregory.myrick@medbridgeed.com,Major,In Progress,,06/Sep/17 8:27 AM,,2.0
+Sub-task,TD-85,12861,12773,Set up app to talk to CloudSearch,gregory.myrick@medbridgeed.com,Major,In Progress,,07/Sep/17 3:04 PM,,
+Sub-task,TD-86,12862,12773,Relevance sorting,,Major,To Do,,07/Sep/17 3:10 PM,,
+Sub-task,TD-89,12865,12773,Add NR user to the whitelist,,Major,To Do,,07/Sep/17 3:20 PM,,
+Story,TD-71,12775,,MedEx exercise sorting,gregory.myrick@medbridgeed.com,Major,In Progress,,06/Sep/17 8:28 AM,,5.0
+Sub-task,TD-80,12856,12775,Make MedEx logo,dave.molinero,Major,Closed,,07/Sep/17 2:44 PM,,
+Sub-task,TD-81,12857,12775,Add position and progression sort attributes to MedEx,mitendra.chhaunkar,Major,In Progress,,07/Sep/17 2:45 PM,,
+Sub-task,TD-82,12858,12775,Add favorites_counter to exercise object,,Major,To Do,,07/Sep/17 2:45 PM,,
+Sub-task,TD-83,12859,12775,Add sort to search API,gregory.myrick@medbridgeed.com,Major,In Progress,,07/Sep/17 2:47 PM,,
+Story,TD-72,12776,,Controller update to switch users to MedEx,,Major,To Do,,06/Sep/17 8:44 AM,,2.0
+Sub-task,TD-87,12863,12776,Add whitelist of student IDs to CMS table to allow MedEx,,Major,To Do,,07/Sep/17 3:17 PM,,
+Sub-task,TD-88,12864,12776,Update use_medex to look at the new functionality,,Major,To Do,,07/Sep/17 3:18 PM,,
+Story,TD-68,12772,,MedEx Live Data Sync,mitendra.chhaunkar,Major,In Progress,,06/Sep/17 8:25 AM,,5.0
+Sub-task,TD-79,12822,12772,Add hooks to update models,mitendra.chhaunkar,Major,In Progress,,07/Sep/17 8:35 AM,,
+Sub-task,TD-84,12860,12772,Create route in MedEx to update exercises with student modifications,mitendra.chhaunkar,Major,In Progress,,07/Sep/17 2:59 PM,,
+Story,TD-70,12774,,Launch MedEx,,Major,To Do,,06/Sep/17 8:28 AM,,2.0
+Sub-task,TD-90,12866,12774,Finalize Boatswain values for proudction,,Major,To Do,,07/Sep/17 3:21 PM,,
+Sub-task,TD-91,12867,12774,"Set up monitoring & alerting (NR, etc.)",,Major,To Do,,07/Sep/17 3:22 PM,,
+Sub-task,TD-92,12868,12774,Deploy,,Major,To Do,,07/Sep/17 3:22 PM,,
+Story,TD-73,12777,,Set up Mongo,,Major,To Do,,06/Sep/17 8:45 AM,,2.0
+Sub-task,TD-93,12869,12777,Set up production mongo cluster,,Major,To Do,,07/Sep/17 3:24 PM,,
+Sub-task,TD-94,12870,12777,Add credit card from Seth,admin,Major,To Do,,07/Sep/17 3:24 PM,,
+Sub-task,TD-95,12871,12777,Production hardening (security and backups),,Major,To Do,,07/Sep/17 3:26 PM,,
+Story,TD-74,12778,,Testing MedEx,,Major,To Do,,06/Sep/17 9:00 AM,,3.0
+Sub-task,TD-96,12872,12778,Bug bash,,Major,To Do,,07/Sep/17 3:28 PM,,
+Sub-task,TD-97,12873,12778,Placeholder for bug fixes,,Major,To Do,,07/Sep/17 3:28 PM,,
+Task,TD-61,12728,,Investigate exercise usage [Running list],gregory.myrick@medbridgeed.com,Major,To Do,,29/Aug/17 4:10 PM,,
+Bug,ACA-309,12633,,Error loading content HEP exercises w/ patient version MedBridge Go,mike.jancola,Major,Accepted,,22/Aug/17 1:24 PM,,1.0
+Sub-task,ACA-315,12809,12633,Branch logic based on patient version/ HEP Lite,mike.jancola,Major,Done,,06/Sep/17 4:32 PM,,
+Sub-task,ACA-316,12810,12633,Consider refactoring duplicate code,mike.jancola,Major,Done,,06/Sep/17 4:33 PM,,
+Sub-task,ACA-317,12811,12633,"Simulate and Test all conditions (password change, error getting program, error w/dosage)",mike.jancola,Major,Done,,06/Sep/17 4:34 PM,,
+Sub-task,ACA-318,12812,12633,Deploy fix and whitelabels,mike.jancola,Major,Done,,06/Sep/17 4:34 PM,,
+Story,ACA-242,12034,,Videos mirrored in HEP Builder aren't mirrored in app,mike.jancola,Major,QA,,13/Jul/17 1:36 PM,,1.0
+Sub-task,ACA-298,12543,12034,check for mirrored flag and append token,mike.jancola,Major,Done,,16/Aug/17 3:56 PM,,
+Sub-task,ACA-300,12545,12034,force update for all programs,mike.jancola,Major,Done,,16/Aug/17 4:00 PM,,
+Sub-task,ACA-301,12546,12034,"Release, smoketest and update whitelabels",mike.jancola,Major,In Progress,,16/Aug/17 4:00 PM,,
+Sub-task,ACA-321,12874,12034,check for flag in resources,mike.jancola,Major,Done,,07/Sep/17 3:31 PM,,
+Story,ACA-259,12140,,Refactor warm-up for videos,mike.jancola,Major,In Progress,,25/Jul/17 4:21 PM,,5.0
+Sub-task,ACA-319,12813,12140,Remove warmup logic which leaves first video decrypted,mike.jancola,Major,Done,,06/Sep/17 4:36 PM,,
+Sub-task,ACA-320,12814,12140,"Potentially connect Dialog for ""please wait while we decrypt""",,Major,In Progress,,06/Sep/17 4:37 PM,,
+Sub-task,ACA-323,12877,12140,Wire forward button to availability of unencrypted videos,,Major,To Do,,07/Sep/17 3:39 PM,,
+Story,ACA-310,12625,,Compliance Course proof-of-concept,mike.jancola,Major,To Do,,21/Aug/17 1:59 PM,,2.0
+Sub-task,ACA-314,12808,12625,Implement Webview Activity and test,,Major,To Do,,06/Sep/17 4:30 PM,,
+Sub-task,ACA-324,12878,12625,Talk with Mitendra,,Major,To Do,,07/Sep/17 3:48 PM,,
+Story,ACA-180,11681,,Apply color config to Settings,mike.jancola,Critical,To Do,,19/Jun/17 1:53 PM,,1.0
+Sub-task,ACA-302,12548,11681,change headings text color,,Major,To Do,,16/Aug/17 4:27 PM,,
+Sub-task,ACA-303,12549,11681,change toggle switch colors,,Major,To Do,,16/Aug/17 4:27 PM,,
+Sub-task,ACA-304,12550,11681,update ruby script to output named color,,Major,To Do,,16/Aug/17 4:28 PM,,
+Sub-task,ACA-305,12551,11681,"Release, smoketest and update whitelabels",,Major,To Do,,16/Aug/17 4:28 PM,,
+Story,PE-128,11837,,MedCalc averages ranges,parker,Blocker,Launched,,29/Jun/17 9:31 AM,,0.0
+Sub-task,PE-176,12767,11837,Regex input and average any range values,parker,Major,Done,,05/Sep/17 2:17 PM,,
+Story,MOB-66,12153,,Ability to filter by userAgentOS for where platform = 2,parker,Critical,Accepted,,26/Jul/17 11:31 AM,,0.0
+Sub-task,MOB-82,12603,12153,Track proper platform,parker,Major,Done,,17/Aug/17 3:54 PM,,
+Bug,MOB-86,12766,,Patient App iOS 'remember me' unchecked causes failed requests to v3/patients/sign_in,parker,Major,QA,,05/Sep/17 1:32 PM,,1.0
+Sub-task,MOB-88,12788,12766,Show log-in screen if user backgrounds app,parker,Major,Done,,06/Sep/17 12:45 PM,,
+Story,IOS-99,11802,,Use new Apple Ratings API,parker,Critical,Dev Done,,28/Jun/17 7:46 AM,,2.0
+Sub-task,IOS-181,12789,11802,Remove our custom rating/feedback prompts,parker,Major,Done,,06/Sep/17 12:47 PM,,
+Sub-task,IOS-182,12790,11802,Use Apple SKStoreReviewController,parker,Major,Closed,,06/Sep/17 12:47 PM,,
+Story,IOS-175,12681,,Compliance Course proof-of-concept,parker,Major,To Do,,28/Aug/17 4:19 PM,,2.0
+Sub-task,IOS-183,12791,12681,Test loading Compliance Course in webview,parker,Major,To Do,,06/Sep/17 12:48 PM,,
+Story,INT-3,11253,,Send Patient Ed to ATI EMR,dave.molinero,Blocker,Dev Review,,24/May/17 4:11 PM,,2.0
+Sub-task,INT-129,12853,11253,Update method to include patient education data,dave.molinero,Major,Done,,07/Sep/17 2:26 PM,,
+Sub-task,INT-130,12854,11253,Update tests to handle new data,dave.molinero,Major,Closed,,07/Sep/17 2:29 PM,,
+Sub-task,INT-131,12855,11253,Research sandbox webserver to send data to,admin,Major,Done,,07/Sep/17 2:32 PM,,
+Story,INT-5,11256,,Add to delete PE from HEP from within ATI,dave.molinero,Minor,In Progress,,24/May/17 4:14 PM,,5.0
+Sub-task,INT-126,12842,11256,Configure a local setup,dave.molinero,Major,In Progress,,07/Sep/17 11:56 AM,,
+Sub-task,INT-127,12843,11256,Write or update unit test to handle patient ed data,dave.molinero,Major,To Do,,07/Sep/17 11:57 AM,,
+Sub-task,INT-128,12844,11256,Update endpoint to handle patient ed data,dave.molinero,Major,To Do,,07/Sep/17 11:59 AM,,
+Story,INT-93,12383,,Set up ATI staging,phil,Major,To Do,,10/Aug/17 11:31 AM,,3.0
+Sub-task,INT-124,12820,12383,Meet with Phil Monday to plan out building them,,Major,To Do,,07/Sep/17 8:34 AM,,
+Sub-task,INT-125,12821,12383,Configure each staging to use the right endpoints and login,,Major,To Do,,07/Sep/17 8:34 AM,,
+Story,PE-140,12048,,Sets/reps/hold behavior match Weekly/Daily,dave.molinero,Critical,To Do,,14/Jul/17 2:36 PM,,5.0
+Sub-task,PE-181,12847,12048,Parse program exercise attributes to add 'permanent' to the standard ones,dave.molinero,Major,To Do,,07/Sep/17 2:13 PM,,
+Sub-task,PE-182,12848,12048,"Update UI to make them behave like the weekly and daily (strikethru, etc.) Line 1568 in program.js",dave.molinero,Major,To Do,,07/Sep/17 2:14 PM,,
+Sub-task,PE-183,12849,12048,Move the permanent elements in the UI to be like daily and weekly,dave.molinero,Major,To Do,,07/Sep/17 2:14 PM,,
+Sub-task,PE-184,12851,12048,Staging with working Patient Service,phil,Major,To Do,,07/Sep/17 2:17 PM,,
+Story,INT-123,12779,,Kaiser Sprint F Place Holder,,Major,To Do,,06/Sep/17 10:30 AM,,2.0
+Story,IOS-180,12780,,iOS 8 pt Placeholder,,Major,To Do,,06/Sep/17 10:31 AM,,8.0
+Story,ACA-313,12781,,Android 3 pt Placeholder,,Major,To Do,,06/Sep/17 10:31 AM,,3.0
