@@ -1,0 +1,31 @@
+Issue Type,Issue key,Issue id,Parent id,Summary,Assignee,Reporter,Priority,Status,Resolution,Created,Updated,Due Date,Custom field (Story Points)
+Story,INT-123,12779,,Kaiser Template Service + API,,leigh,Major,To Do,,06/Sep/17 10:30 AM,27/Sep/17 1:23 PM,,5.0
+Story,INT-103,12684,,Assign HEP program from Templates,,leigh,Major,To Do,,28/Aug/17 4:26 PM,27/Sep/17 1:23 PM,,5.0
+Story,INT-121,12702,,Accept HL7 (+ create patient),,leigh,Major,To Do,,28/Aug/17 4:38 PM,27/Sep/17 4:53 PM,,3.0
+Story,INT-100,12680,,Create Clinician Account via ADT Message,,leigh,Major,To Do,,28/Aug/17 4:03 PM,27/Sep/17 1:23 PM,,5.0
+Story,INT-120,12701,,"Remove Print, Text, Email and Document Buttons",,leigh,Major,To Do,,28/Aug/17 4:37 PM,27/Sep/17 1:23 PM,,2.0
+Story,INT-133,13094,,Disable Template Sharing Toggle in Admin,,leigh,Major,To Do,,21/Sep/17 8:30 AM,27/Sep/17 1:23 PM,,2.0
+Story,INT-134,13097,,Block Access of PHI outside of Kaiser,,leigh,Major,To Do,,21/Sep/17 9:43 AM,27/Sep/17 1:23 PM,,2.0
+Story,INT-110,12691,,Message Provider Link - MVP,,leigh,Major,To Do,,28/Aug/17 4:28 PM,27/Sep/17 1:24 PM,,2.0
+Story,KBR-17,13007,,Learn Angular 4,,crystal.schissler,Blocker,To Do,,18/Sep/17 10:40 AM,26/Sep/17 11:23 AM,,5.0
+Sub-task,KBR-21,13055,13007,Determine if we want to use a design Template ,,crystal.schissler,Major,To Do,,19/Sep/17 2:42 PM,26/Sep/17 10:41 AM,,
+Story,KBR-6,12840,,Admin Library Page,,crystal.schissler,Blocker,To Do,,07/Sep/17 11:11 AM,27/Sep/17 11:18 AM,,3.0
+Story,KBR-9,12795,,Details Drawer,,crystal.schissler,Critical,To Do,,06/Sep/17 1:27 PM,27/Sep/17 1:08 PM,,3.0
+Story,KBR-8,12794,,Folders,,crystal.schissler,Critical,To Do,,06/Sep/17 1:26 PM,27/Sep/17 3:13 PM,,3.0
+Story,KBR-10,12797,,Archiving ,,crystal.schissler,Critical,To Do,,06/Sep/17 2:26 PM,27/Sep/17 11:35 AM,,3.0
+Story,KBR-18,13015,,Admin Library Search,,crystal.schissler,Major,To Do,,19/Sep/17 8:43 AM,27/Sep/17 1:08 PM,,1.0
+Epic,KBR-1,12792,,Admin Library - Interactive Prototype ,,crystal.schissler,Major,To Do,,06/Sep/17 1:25 PM,27/Sep/17 11:05 AM,,
+Story,ACA-86,11040,,Prompt user for rating,,david.johnstone,Critical,To Do,,16/May/17 4:34 PM,27/Sep/17 9:21 AM,,3.0
+Story,IOS-157,12250,,My Activity page gets adherence from API,,david.johnstone,Major,To Do,,01/Aug/17 8:09 AM,27/Sep/17 9:08 AM,,5.0
+Story,ACA-117,11096,,My Activity page gets adherence from API,,david.johnstone,Major,To Do,,18/May/17 4:23 PM,27/Sep/17 9:08 AM,,5.0
+Story,ACA-196,11825,,Tech Debt: refactor three getDosage calls into one,,mike.jancola,Major,To Do,,28/Jun/17 4:01 PM,27/Sep/17 9:15 AM,,2.0
+Story,ACA-197,11826,,Tech Debt: refactor two methods which merge episodes with database,,mike.jancola,Major,To Do,,28/Jun/17 4:15 PM,27/Sep/17 9:15 AM,,2.0
+Story,IOS-162,12368,,Impose delay before sending text to server,,david.johnstone,Major,To Do,,09/Aug/17 3:38 PM,27/Sep/17 9:10 AM,,2.0
+Story,IOS-179,12753,,Screenshots from concurrent simulators,,david.johnstone,Major,To Do,,01/Sep/17 11:22 AM,27/Sep/17 9:10 AM,,2.0
+Task,LMS-253,12786,,Turn NCS Prep Program On,,crystal.schissler,Major,To Do,,06/Sep/17 11:13 AM,26/Sep/17 9:50 AM,,
+Bug,ACA-325,12879,,"Credentials are stored when user does not select ""Remember me""",,mike.jancola,Major,To Do,,08/Sep/17 8:14 AM,27/Sep/17 9:17 AM,,0.5
+Story,IOS-184,12970,,iPhone X support,,david.johnstone,Major,To Do,,14/Sep/17 9:46 AM,27/Sep/17 9:08 AM,,1.0
+Bug,ACA-329,13009,,"Clinician app user sign in bad credentials, won't log in after fixing",,robert.humphres,Major,To Do,,18/Sep/17 11:30 AM,27/Sep/17 9:18 AM,,0.5
+Story,ITM-528,13095,,[DAVE] Update Home Page with Apps Banner,dave.molinero,kristin,Major,To Do,,21/Sep/17 8:47 AM,27/Sep/17 8:33 AM,,3.0
+Story,IOS-199,13149,,[Carryover] New API for adherence service data on My Activity page,parker,david.johnstone,Major,To Do,,27/Sep/17 11:33 AM,27/Sep/17 11:34 AM,,1.0
+Story,INT-142,13151,,ATI Testing of Patient Ed,,leigh,Major,To Do,,27/Sep/17 1:15 PM,27/Sep/17 1:15 PM,,0.75

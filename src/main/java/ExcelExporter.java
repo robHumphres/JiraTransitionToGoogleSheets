@@ -80,7 +80,7 @@ public class ExcelExporter {
             _excelFileLocation = System.getProperty("user.dir") + sprintName + ".xls";
         }
 
-        readCSVFile("Alpha_Sprint_faceoff_custom.csv");//locOfCSV);
+        readCSVFile("Alpha_Sprint_G.csv");//locOfCSV);
 
         //Get that ABC order going
         Collections.sort(listOfItems);
