@@ -63,24 +63,26 @@ public class ExcelExporter {
     }
 
 
-    private static String _excelFileLocation = "/Users/robert/Desktop/temp.xls";//System.getProperty("user.dir")+"temp.xls";
+    private static String _excelFileLocation = "~/Desktop/temp.xls";
     private static List<sprintObject> listOfItems = new ArrayList<sprintObject>();
     private static WritableWorkbook myFirstWbook = null;
 
 
-    public static void main(String [] args) {
+    public static void main(String [] args) throws Exception{
         String sprintName;
         String locOfCSV = null;
 
-        if(args.length == 1)
-            locOfCSV = args[0];
+        if(args.length < 1)
+            throw new Exception("Must have the full path of the csv from jira, and must tell the sprint name");
+
 
         if (args.length == 2) {
+            locOfCSV = args[0];
             sprintName = args[1];
             _excelFileLocation = System.getProperty("user.dir") + sprintName + ".xls";
         }
 
-        readCSVFile("Alpha_Sprint_G.csv");//locOfCSV);
+        readCSVFile(locOfCSV);
 
         //Get that ABC order going
         Collections.sort(listOfItems);
