@@ -3,9 +3,7 @@ import jxl.Workbook;
 import jxl.write.*;
 import jxl.write.Number;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.*;
 
@@ -15,12 +13,11 @@ public class ExcelExporter {
     private static class sprintObject implements Comparable<sprintObject>{
         String issueType,issueKey,issueSummary, storyPts;
 
-
-        public sprintObject(String issue, String key, String summary, String story){
+        public sprintObject(String issue, String key, String summary){
             this.issueType = issue;
             this.issueKey = key;
             this.issueSummary = summary;
-            this.storyPts = story;
+//            this.storyPts = story;
         }
 
         public String getStoryPts(){return this.storyPts;}
@@ -63,24 +60,30 @@ public class ExcelExporter {
     }
 
 
-    private static String _excelFileLocation = "~/Desktop/temp.xls";
+    private static String _excelFileLocation = System.getProperty("user.dir");//+"/temp.xls";
     private static List<sprintObject> listOfItems = new ArrayList<sprintObject>();
     private static WritableWorkbook myFirstWbook = null;
+    private static String baseJiraUrl = "https://medbridge.atlassian.net/browse/";
 
 
     public static void main(String [] args) throws Exception{
         String sprintName;
         String locOfCSV = null;
 
-        if(args.length < 1)
-            throw new Exception("Must have the full path of the csv from jira, and must tell the sprint name");
+//        if(args.length < 1)
+//            throw new Exception("Must have the full path of the csv from jira, and must tell the sprint name");
+//
+//
+//        if (args.length == 2) {
+//            locOfCSV = args[0];
+//            sprintName = args[1];
+//            _excelFileLocation = System.getProperty("user.dir") + sprintName + ".xls";
+//        }
 
-
-        if (args.length == 2) {
-            locOfCSV = args[0];
-            sprintName = args[1];
-            _excelFileLocation = System.getProperty("user.dir") + sprintName + ".xls";
-        }
+        locOfCSV = "Alpha_Sprint_I.csv";
+        sprintName = "Sprint_Independence_Day";
+        _excelFileLocation = _excelFileLocation + "/" + sprintName + ".csv";
+        System.out.println(_excelFileLocation);
 
         readCSVFile(locOfCSV);
 
@@ -110,13 +113,20 @@ public class ExcelExporter {
 //                    currTicketType = split[1];
 //                    excelSheet.addCell(new Label(0,x,getJiraType(split[1])));
 //                }
+                /*
+                WritableHyperlink link = (new WritableHyperlink(1,x,new URL(jiraLinkURL)));
+                    link.setDescription(linkDesc);
+                    excelSheet.addHyperlink(link);
+                 */
 
                 Label labelType = new Label(0, x, listOfItems.get(x).getIssueType());
-                Label labelIssue = new Label(1, x, listOfItems.get(x).getIssueKey());
+//                Label labelIssue = new Label(1, x, listOfItems.get(x).getIssueKey());
+                WritableHyperlink link = (new WritableHyperlink(1,x,new URL(baseJiraUrl+listOfItems.get(x).getIssueKey())));
+                link.setDescription(listOfItems.get(x).getIssueKey());
                 Label labelSummary = new Label(2, x, listOfItems.get(x).getIssueSummary());
                 Label labelStoryPt = new Label(4,x,listOfItems.get(x).getStoryPts());
                 excelSheet.addCell(labelType);
-                excelSheet.addCell(labelIssue);
+                excelSheet.addHyperlink(link);
                 excelSheet.addCell(labelSummary);
                 excelSheet.addCell(labelStoryPt);
             }
@@ -141,6 +151,41 @@ public class ExcelExporter {
 
         }//finally
     }//main
+
+    private static void touchFile(){
+
+        String command = System.getProperty("user.dir");
+            //Needed for pinging waiting for device to come back on
+            if(!command.contains("ping"))
+                command = System.getProperty("user.home")+"/Library/Android/sdk/platform-tools/adb " + command;
+
+
+            StringBuffer output = new StringBuffer();
+
+            Process p;
+            try {
+                p = Runtime.getRuntime().exec(command);
+                p.waitFor();
+                BufferedReader reader =
+                        new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+                String line = "";
+                while ((line = reader.readLine())!= null) {
+                    if(line.contains("10.")) {
+                        String [] arr = line.split("src");
+                        output.append(arr[1]);
+                        break;
+                    }else{
+                        output.append(line + "\n");
+                    }
+
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+    }
 
     //TODO: Need to finish getting all of the naming conventions
     private String getJiraType(String type){
@@ -174,10 +219,10 @@ public class ExcelExporter {
                //System.out.println(arrayParse.toString());
                if(arrayParse[0].equalsIgnoreCase("story")||arrayParse[0].equalsIgnoreCase("bug")){
                    try {
-                       listOfItems.add(new sprintObject(arrayParse[0], arrayParse[1], arrayParse[4], arrayParse[11]));
-                       System.out.println(new sprintObject(arrayParse[0], arrayParse[1], arrayParse[4], arrayParse[11]).toString());
+                       listOfItems.add(new sprintObject(arrayParse[0], arrayParse[1], arrayParse[3]));//, arrayParse[11]));
+                       System.out.println(new sprintObject(arrayParse[0], arrayParse[1], arrayParse[3]).toString());//, arrayParse[11]).toString());
                    }catch(Exception e){
-
+                        System.out.println(e.getMessage());
                    }
                }
            }
@@ -202,7 +247,7 @@ public class ExcelExporter {
 
         Label label;
         WritableSheet excelSheet = myFirstWbook.createSheet(obj.getIssueKey(),count);
-        String baseJiraUrl = "https://medbridge.atlassian.net/browse/";
+
         String jiraLinkURL = baseJiraUrl+obj.getIssueKey();
         String linkDesc = obj.getIssueKey();
         WritableCellFormat header = new WritableCellFormat();
