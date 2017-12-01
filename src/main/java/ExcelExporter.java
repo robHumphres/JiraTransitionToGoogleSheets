@@ -80,8 +80,8 @@ public class ExcelExporter {
 //            _excelFileLocation = System.getProperty("user.dir") + sprintName + ".xls";
 //        }
 
-        locOfCSV = "Alpha_Sprint_I.csv";
-        sprintName = "Sprint_Independence_Day";
+        locOfCSV = "Alpha_Sprint_J.csv";
+        sprintName = "Sprint_J_Name";
         _excelFileLocation = _excelFileLocation + "/" + sprintName + ".csv";
         System.out.println(_excelFileLocation);
 
@@ -106,7 +106,7 @@ public class ExcelExporter {
             }
 
             String currTicketType = "";
-            for(int x = 1; x < listOfItems.size();x++) {
+            for(int x = 1; x < listOfItems.size()+1;x++) {
 //
 //                String [] split = listOfItems.get(x).issueKey.split("-");
 //                if(!(currTicketType.equalsIgnoreCase(split[1]))){
@@ -119,12 +119,11 @@ public class ExcelExporter {
                     excelSheet.addHyperlink(link);
                  */
 
-                Label labelType = new Label(0, x, listOfItems.get(x).getIssueType());
-//                Label labelIssue = new Label(1, x, listOfItems.get(x).getIssueKey());
-                WritableHyperlink link = (new WritableHyperlink(1,x,new URL(baseJiraUrl+listOfItems.get(x).getIssueKey())));
-                link.setDescription(listOfItems.get(x).getIssueKey());
-                Label labelSummary = new Label(2, x, listOfItems.get(x).getIssueSummary());
-                Label labelStoryPt = new Label(4,x,listOfItems.get(x).getStoryPts());
+                Label labelType = new Label(0, x, listOfItems.get(x-1).getIssueType());
+                WritableHyperlink link = (new WritableHyperlink(1,x,new URL(baseJiraUrl+listOfItems.get(x-1).getIssueKey())));
+                link.setDescription(listOfItems.get(x-1).getIssueKey());
+                Label labelSummary = new Label(2, x, listOfItems.get(x-1).getIssueSummary());
+                Label labelStoryPt = new Label(4,x,listOfItems.get(x-1).getStoryPts());
                 excelSheet.addCell(labelType);
                 excelSheet.addHyperlink(link);
                 excelSheet.addCell(labelSummary);
