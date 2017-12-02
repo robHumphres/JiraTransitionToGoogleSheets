@@ -253,7 +253,7 @@ public class ExcelExporter {
 
         try {
 
-            header.setBackground(Colour.PLUM);
+            header.setBackground(Colour.LIGHT_GREEN);
 
             for (int x = 0; x < headers.length; x++) {
                 label = new Label(0, x, headers[x]);
@@ -304,7 +304,7 @@ public class ExcelExporter {
 
         try {
 
-            header.setBackground(Colour.DARK_PURPLE);
+            header.setBackground(Colour.LIGHT_TURQUOISE);
 
             for(int x = 0; x < arrayHeaders.length; x ++) {
 
