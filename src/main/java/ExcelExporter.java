@@ -64,24 +64,29 @@ public class ExcelExporter {
     private static List<sprintObject> listOfItems = new ArrayList<sprintObject>();
     private static WritableWorkbook myFirstWbook = null;
     private static String baseJiraUrl = "https://medbridge.atlassian.net/browse/";
+    static String sprintName = null;
+    static String locOfCSV = null;
 
+    private static void setupArgs(String [] args) throws Exception{
+
+        if(args.length < 1)
+            throw new Exception("You must have the following arguments\n" +
+                    "arg[0] = Location of CSV From JIRA\n" +
+                    "arg[1] = Location of where you want to have the file stored\n" +
+                    "\n Ex. java -jar jiraToSheets.jar ~/user/anonymous/jiraFile.csv ~/user/anonymous/Desktop/SomeExcelFile.xls"
+            );
+
+
+        if (args.length == 2) {
+            locOfCSV = args[0];
+            sprintName = args[1];
+        }
+    }
 
     public static void main(String [] args) throws Exception{
-        String sprintName = null;
-        String locOfCSV = null;
 
-//        if(args.length < 1)
-//            throw new Exception("You must have the following arguments\n" +
-//                    "arg[0] = Location of CSV From JIRA\n" +
-//                    "arg[1] = Location of where you want to have the file stored\n" +
-//                    "\n Ex. java -jar jiraToSheets.jar ~/user/anonymous/jiraFile.csv ~/user/anonymous/Desktop/SomeExcelFile.xls"
-//            );
-//
-//
-//        if (args.length == 2) {
-//            locOfCSV = args[0];
-//            sprintName = args[1];
-//        }
+
+//        setupArgs(args);
 
 
         locOfCSV = "Alpha_Sprint_J.csv";
