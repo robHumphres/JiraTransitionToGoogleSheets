@@ -67,21 +67,27 @@ public class ExcelExporter {
 
 
     public static void main(String [] args) throws Exception{
-        String sprintName;
+        String sprintName = null;
         String locOfCSV = null;
 
 //        if(args.length < 1)
-//            throw new Exception("Must have the full path of the csv from jira, and must tell the sprint name");
+//            throw new Exception("You must have the following arguments\n" +
+//                    "arg[0] = Location of CSV From JIRA\n" +
+//                    "arg[1] = Location of where you want to have the file stored\n" +
+//                    "\n Ex. java -jar jiraToSheets.jar ~/user/anonymous/jiraFile.csv ~/user/anonymous/Desktop/SomeExcelFile.xls"
+//            );
 //
 //
 //        if (args.length == 2) {
 //            locOfCSV = args[0];
 //            sprintName = args[1];
-//            _excelFileLocation = System.getProperty("user.dir") + sprintName + ".xls";
 //        }
+
 
         locOfCSV = "Alpha_Sprint_J.csv";
         sprintName = "Sprint_J_Name";
+//        locOfCSV = locOfCSV;
+//        sprintName = "Sprint_J_Name";
         _excelFileLocation = _excelFileLocation + "/" + sprintName + ".csv";
         System.out.println(_excelFileLocation);
 
@@ -107,23 +113,15 @@ public class ExcelExporter {
 
             String currTicketType = "";
             for(int x = 1; x < listOfItems.size()+1;x++) {
-//
-//                String [] split = listOfItems.get(x).issueKey.split("-");
-//                if(!(currTicketType.equalsIgnoreCase(split[1]))){
-//                    currTicketType = split[1];
-//                    excelSheet.addCell(new Label(0,x,getJiraType(split[1])));
-//                }
-                /*
-                WritableHyperlink link = (new WritableHyperlink(1,x,new URL(jiraLinkURL)));
-                    link.setDescription(linkDesc);
-                    excelSheet.addHyperlink(link);
-                 */
 
+                //Get Hyperlink and labels
                 Label labelType = new Label(0, x, listOfItems.get(x-1).getIssueType());
                 WritableHyperlink link = (new WritableHyperlink(1,x,new URL(baseJiraUrl+listOfItems.get(x-1).getIssueKey())));
                 link.setDescription(listOfItems.get(x-1).getIssueKey());
                 Label labelSummary = new Label(2, x, listOfItems.get(x-1).getIssueSummary());
                 Label labelStoryPt = new Label(4,x,listOfItems.get(x-1).getStoryPts());
+
+                //Add to sheet
                 excelSheet.addCell(labelType);
                 excelSheet.addHyperlink(link);
                 excelSheet.addCell(labelSummary);
@@ -321,12 +319,5 @@ public class ExcelExporter {
         }
 
     }
-
-
-
-
-
-
-
 
 }
