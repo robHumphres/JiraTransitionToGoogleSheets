@@ -89,8 +89,8 @@ public class ExcelExporter {
 //        setupArgs(args);
 
 
-        locOfCSV = "Alpha_Sprint_J.csv";
-        sprintName = "Sprint_J_Name";
+        locOfCSV = "Alpha_Sprint_K.csv";
+        sprintName = "Sprint_K_Name";
 //        locOfCSV = locOfCSV;
 //        sprintName = "Sprint_J_Name";
         _excelFileLocation = _excelFileLocation + "/" + sprintName + ".csv";
