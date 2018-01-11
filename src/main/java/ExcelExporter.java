@@ -86,11 +86,11 @@ public class ExcelExporter {
     public static void main(String [] args) throws Exception{
 
 
-//        setupArgs(args);
+        setupArgs(args);
 
-
-        locOfCSV = "Alpha_Sprint_L.csv";
-        sprintName = "Sprint_L_Name";
+//
+//        locOfCSV = "Alpha_Sprint_L.csv";
+//        sprintName = "Sprint_L_Name";
 //        locOfCSV = locOfCSV;
 //        sprintName = "Sprint_J_Name";
         _excelFileLocation = _excelFileLocation + "/" + sprintName + ".x";
