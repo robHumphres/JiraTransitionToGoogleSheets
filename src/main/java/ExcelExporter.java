@@ -13,11 +13,11 @@ public class ExcelExporter {
     private static class sprintObject implements Comparable<sprintObject>{
         String issueType,issueKey,issueSummary, storyPts;
 
-        public sprintObject(String issue, String key, String summary){
+        public sprintObject(String issue, String key, String summary, String story){
             this.issueType = issue;
             this.issueKey = key;
             this.issueSummary = summary;
-//            this.storyPts = story;
+            this.storyPts = story;
         }
 
         public String getStoryPts(){return this.storyPts;}
@@ -90,10 +90,10 @@ public class ExcelExporter {
 
 
         locOfCSV = "Alpha_Sprint_L.csv";
-        sprintName = "Sprint_L_Name";
+        sprintName = "Sprint_L_temp";
 //        locOfCSV = locOfCSV;
 //        sprintName = "Sprint_J_Name";
-        _excelFileLocation = _excelFileLocation + "/" + sprintName + ".x";
+        _excelFileLocation = _excelFileLocation + "/" + sprintName + ".xls";
         System.out.println(_excelFileLocation);
 
         readCSVFile(locOfCSV);
@@ -221,8 +221,15 @@ public class ExcelExporter {
                //System.out.println(arrayParse.toString());
                if(arrayParse[0].equalsIgnoreCase("story")||arrayParse[0].equalsIgnoreCase("bug")){
                    try {
-                       listOfItems.add(new sprintObject(arrayParse[0], arrayParse[1], arrayParse[3]));//, arrayParse[11]));
-                       System.out.println(new sprintObject(arrayParse[0], arrayParse[1], arrayParse[3]).toString());//, arrayParse[11]).toString());
+                       if(arrayParse.length>=12) {
+                           listOfItems.add(new sprintObject(arrayParse[0], arrayParse[1], arrayParse[3], arrayParse[12]));
+                           System.out.println(new sprintObject(arrayParse[0], arrayParse[1], arrayParse[3], arrayParse[12]).toString());
+                       } else{
+                           listOfItems.add(new sprintObject(arrayParse[0], arrayParse[1], arrayParse[3], "NULL"));
+                           System.out.println(new sprintObject(arrayParse[0], arrayParse[1], arrayParse[3], "NULL").toString());
+                       }
+
+
                    }catch(Exception e){
                         System.out.println(e.getMessage());
                    }
