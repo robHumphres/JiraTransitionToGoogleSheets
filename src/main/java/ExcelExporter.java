@@ -89,11 +89,11 @@ public class ExcelExporter {
 //        setupArgs(args);
 
 
-        locOfCSV = "Alpha_Sprint_K.csv";
-        sprintName = "Sprint_K_Name";
+        locOfCSV = "Alpha_Sprint_L.csv";
+        sprintName = "Sprint_L_Name";
 //        locOfCSV = locOfCSV;
 //        sprintName = "Sprint_J_Name";
-        _excelFileLocation = _excelFileLocation + "/" + sprintName + ".csv";
+        _excelFileLocation = _excelFileLocation + "/" + sprintName + ".x";
         System.out.println(_excelFileLocation);
 
         readCSVFile(locOfCSV);
@@ -244,7 +244,7 @@ public class ExcelExporter {
         };
 
         String [] workHeaders = {
-                "Steps #","Title","Action","Expected Result","Actual Results", "Pass / Fail", "Notes"
+               "Title","Action","Expected Result","Actual Results", "Pass / Fail", "Notes"
         };
 
         Label label;
