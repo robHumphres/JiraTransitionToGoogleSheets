@@ -93,7 +93,7 @@ public class ExcelExporter {
 //        sprintName = "Sprint_L_Name";
 //        locOfCSV = locOfCSV;
 //        sprintName = "Sprint_J_Name";
-        _excelFileLocation = _excelFileLocation + "/" + sprintName + ".x";
+        _excelFileLocation = _excelFileLocation + "/" + sprintName + ".xls";
         System.out.println(_excelFileLocation);
 
         readCSVFile(locOfCSV);
